@@ -1,7 +1,7 @@
 
 package bancogemini;
 
-public class CuentaCorriente extends CuentaBancaria{
+public class CuentaCorriente extends CuentaBancaria implements Chequera{
     private double limiteSobregiro;
 
     public CuentaCorriente(double limiteSobregiro) {
@@ -36,6 +36,12 @@ public class CuentaCorriente extends CuentaBancaria{
         System.out.println("Cuenta Corriente - Titular: "+ getTitular() + 
                 " Saldo: $" + getSaldo() + 
                 " Limite: " + limiteSobregiro);
+    }
+
+    @Override
+    public void emitirCheque(double monto, String beneficiario) {
+        System.out.println("Tramitando cheque para" + beneficiario +" por un monto de $" + monto);
+        saldo -= monto;
     }
  
 }
